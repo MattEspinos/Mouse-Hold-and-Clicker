@@ -77,7 +77,7 @@ if selected_button_type == "keyboard":
     root.title('Auto Hold - Keyboard Input')
 
     # Create a label for instructions
-    instruct_label = tk.Label(root, text='Enter the keyboard character to auto-hold (except "="):', font=('Arial', 12))
+    instruct_label = tk.Label(root, text='Enter the keyboard character to auto-hold:', font=('Arial', 12))
     instruct_label.pack(pady=10)
 
     # Create a text entry field for keyboard character input
