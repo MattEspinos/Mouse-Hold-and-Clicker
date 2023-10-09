@@ -1,4 +1,4 @@
-import tkinter, customtkinter
+import tkinter, customtkinter, keyboard
 from tkinter import messagebox
 from pynput.mouse import Controller, Button
 from pynput.keyboard import Listener, KeyCode
@@ -62,11 +62,12 @@ class MouseApp:
         label_toggle_key = customtkinter.CTkLabel(self.root, text="Press '=' to toggle Mouse Hold")
         label_toggle_key.grid(row=4, column=0, sticky='nsew', columnspan=2, padx=10, pady=10)
 
-        self.root.bind('=', lambda event: self.toggle_mouse_hold())
+        # Use keyboard library to listen for key events globally
+        keyboard.on_press_key('=', lambda event: self.toggle_mouse_hold())
 
     def create_mouse_clicker_page(self):
         self.clear_frame()
-        
+
         btn_back = customtkinter.CTkButton(self.root, text="Back", command=self.create_welcome_page)
         btn_back.grid(row=0, column=0, sticky='nw', padx=10)
 
@@ -88,13 +89,14 @@ class MouseApp:
         self.combobox_interval = customtkinter.CTkComboBox(self.root, width=100, height=30, values=["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "45", "60"], variable=combobox_var, state='readonly')
         self.combobox_interval.grid(row=3, column=1, pady=(10,10), sticky="w")
 
-        self.label_clicker_status = customtkinter.CTkLabel(self.root, text="Mouse Hold Status: OFF")
+        self.label_clicker_status = customtkinter.CTkLabel(self.root, text="Mouse Clicker Status: OFF")
         self.label_clicker_status.grid(row=4, column=0, sticky='nsew', columnspan=2, padx=10, pady=10)
 
-        label_toggle_key = customtkinter.CTkLabel(self.root, text="Press '=' to toggle Mouse Hold")
+        label_toggle_key = customtkinter.CTkLabel(self.root, text="Press '=' to toggle Mouse Clicker")
         label_toggle_key.grid(row=5, column=0, sticky='nsew', columnspan=2, padx=10, pady=10)
 
-        self.root.bind('=', lambda event: self.toggle_mouse_clicker())
+        # Use keyboard library to listen for key events globally
+        keyboard.on_press_key('=', lambda event: self.toggle_mouse_clicker())
 
     def clear_frame(self):
         for widget in self.root.winfo_children():
