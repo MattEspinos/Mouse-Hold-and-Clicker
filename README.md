@@ -12,7 +12,7 @@ Mouse App is a Python GUI application built using Tkinter and customtkinter. It 
 ### Prerequisites
 
 - Python 3.x
-- Required Python packages: `tkinter`, `customtkinter`, `pynput`
+- Required Python packages: `tkinter`, `customtkinter`, `pynput`, `keyboard`
 
 ### Installation
 
