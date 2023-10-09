@@ -1,64 +1,66 @@
-# Auto Hold
+# Mouse App
 
-Auto Hold is a Python program that allows you to automate key holding for keyboard keys. It provides an easy-to-use graphical user interface (GUI) for selecting a key to hold down and toggling the auto-hold feature on and off.
-
-**Note**: An executable version of this program is available for users who don't have Python installed.
+Mouse App is a Python GUI application built using Tkinter and customtkinter. It allows users to perform two main actions: Hold Mouse and Mouse Clicker.
 
 ## Features
 
-- **Keyboard and Mouse Options**: Choose between holding down a keyboard key or a mouse button.
+- **Hold Mouse:** Allows the user to hold down the left or right mouse button.
+- **Mouse Clicker:** Lets the user automate mouse clicks at a specified interval.
 
-- **Efficient Auto-Hold**: The program efficiently manages key holding without causing significant CPU usage.
+## Getting Started
 
-- **Error Handling**: If you enter an invalid key, the program will display an error message, prompting you to enter a valid keyboard character.
+### Prerequisites
 
-## Prerequisites
+- Python 3.x
+- Required Python packages: `tkinter`, `customtkinter`, `pynput`
 
-Before you begin, ensure you have met the following requirements:
+### Installation
 
-- **For Python Version**:
-  - Python 3.x installed on your system.
-  - Required Python packages installed. You can install them using the provided `requirements.txt` file:
-    ```
-    pip install -r requirements.txt
-    ```
+1. Clone the repository:
 
-- **For Executable Version**:
-  - No Python installation is required.
+   ```bash
+   git clone https://github.com/your-username/mouse-app.git
+   cd mouse-app
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Run the application:
+
+   ```bash
+   python mouse_app.py
+   ```
 
 ## Usage
 
-1. **Python Version**:
-   - Run the program by executing the `auto_hold.py` script.
+1. Launch the application.
 
-2. **Executable Version**:
-   - Download the executable version of the program for your operating system from the [Releases](https://github.com/MattEspinos/releases) section of this repository.
+2. The welcome screen presents two options: "Hold Mouse" and "Mouse Clicker."
 
-3. **Common Steps for Both Versions**:
-   - The main window will appear, allowing you to choose between keyboard and mouse options.
+3. **Hold Mouse:**
+   - Select the mouse button to hold (left or right).
+   - Click the "Press '=' to toggle Mouse Hold" label to activate/deactivate the mouse hold.
+   - Use the "Back" button to return to the welcome screen.
 
-   - If you select the keyboard option:
-     - Enter a keyboard character (except '=') in the input field.
-     - Click the "Next" button.
-     - In the configuration window, you can toggle the auto-hold feature on and off by clicking the "Enable Auto Hold" button.
+4. **Mouse Clicker:**
+   - Select the mouse button for clicking (left or right).
+   - Choose the interval for mouse clicks using the dropdown menu.
+   - Click the "Press '=' to toggle Mouse Clicker" label to start/stop the mouse clicker.
+   - Use the "Back" button to return to the welcome screen.
 
-   - If you select the mouse option, the program will auto-hold the left mouse button. Click the "=" key to toggle the auto-hold feature on and off.
+## Customization
 
-   - To exit the program, click the "Exit" button in any window.
+- The appearance of the application can be adjusted using the `customtkinter` library.
+- Modify the available intervals in the `Combobox` widget to suit your needs.
 
-## Troubleshooting
+## Notes
 
-- **Performance Issues**: If the program causes significant PC slowdowns, consider closing other resource-intensive applications or tasks running on your system.
+- The application uses the '=' key to toggle both the mouse hold and mouse clicker functionalities.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [keyboard](https://github.com/boppreh/keyboard): A Python library for working with keyboards.
-- [pyautogui](https://pyautogui.readthedocs.io/): A Python library for GUI automation.
-
-## Support
-
-For any issues or questions, please feel free to open an issue in this repository.
