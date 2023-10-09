@@ -1,6 +1,6 @@
-# Mouse App
+# Mouse-Hold-and-Clicker
 
-Mouse App is a Python GUI application built using Tkinter and customtkinter. It allows users to perform two main actions: Hold Mouse and Mouse Clicker.
+Mouse-Hold-and-Clicker is a Python GUI application built using Tkinter and customtkinter. It provides two main functionalities: Hold Mouse and Mouse Clicker.
 
 ## Features
 
@@ -19,8 +19,8 @@ Mouse App is a Python GUI application built using Tkinter and customtkinter. It 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/mouse-app.git
-   cd mouse-app
+   git clone https://github.com/MattEspinos/mouse-hold-and-clicker.git
+   cd mouse-hold-and-clicker
    ```
 
 2. Install dependencies:
@@ -32,7 +32,15 @@ Mouse App is a Python GUI application built using Tkinter and customtkinter. It 
 3. Run the application:
 
    ```bash
-   python mouse_app.py
+   python mouse_hold_and_clicker.py
+   ```
+
+   **OR**
+
+   Run the executable version:
+
+   ```bash
+   ./dist/mouse_hold_and_clicker.exe
    ```
 
 ## Usage
@@ -60,6 +68,11 @@ Mouse App is a Python GUI application built using Tkinter and customtkinter. It 
 ## Notes
 
 - The application uses the '=' key to toggle both the mouse hold and mouse clicker functionalities.
+- The `keyboard` library is used to capture the '=' key globally, making the application more responsive to key presses outside its window.
+
+## Executable Version
+
+An executable version of the application is available in the `dist` directory. Run `mouse_hold_and_clicker.exe` to use the application without Python installed.
 
 ## License
 
