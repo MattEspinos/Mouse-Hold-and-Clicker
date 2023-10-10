@@ -69,6 +69,7 @@ Mouse-Hold-and-Clicker is a Python GUI application built using Tkinter and custo
 
 - The application uses the '=' key to toggle both the mouse hold and mouse clicker functionalities.
 - The `keyboard` library is used to capture the '=' key globally, making the application more responsive to key presses outside its window.
+- The application uses the '-' key to force close the program.
 
 ## Executable Version
 
