@@ -21,6 +21,7 @@ class MouseApp:
         self.mouse_held = {"left": False, "right": False}
         self.clicker_running = False
         self.clicker_thread = None
+        self.user_initiated_click = False
 
         self.create_welcome_page()
 
@@ -94,7 +95,7 @@ class MouseApp:
         label_interval.grid(row=3, column=0, padx=10, pady=10)
 
         combobox_var = customtkinter.StringVar(value="1")
-        self.combobox_interval = customtkinter.CTkComboBox(self.root, width=100, height=30, values=["0.1", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"], variable=combobox_var, state='readonly')
+        self.combobox_interval = customtkinter.CTkComboBox(self.root, width=100, height=30, values=["0.01", "0.1", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55", "60"], variable=combobox_var, state='readonly')
         self.combobox_interval.grid(row=3, column=1, pady=(10,10), sticky="w")
 
         self.label_clicker_status = customtkinter.CTkLabel(self.root, text="Mouse Clicker Status: OFF", font=(None, 18), text_color='lightblue')
@@ -110,20 +111,6 @@ class MouseApp:
     def clear_frame(self):
         for widget in self.root.winfo_children():
             widget.destroy()
-
-    def toggle_mouse_hold(self):
-        if self.in_hold_page:
-            button = Button.left if self.var_mouse_button.get() == "left" else Button.right
-            mouse_button = self.var_mouse_button.get()
-
-            if self.mouse_held[mouse_button]:
-                self.mouse.release(button)
-                self.mouse_held[mouse_button] = False
-                self.label_hold_status.configure(text=f"Mouse Hold Status: OFF", text_color='lightblue')
-            else:
-                self.mouse.press(button)
-                self.mouse_held[mouse_button] = True
-                self.label_hold_status.configure(text=f"Mouse Hold Status: ON", text_color='red')
 
     def toggle_mouse_clicker(self):
         if self.clicker_thread and self.clicker_thread.is_alive():
@@ -148,13 +135,27 @@ class MouseApp:
 
             self.label_clicker_status.configure(text="Mouse Clicker Status: ON", text_color='red')
 
-
     def clicker_loop(self, button, interval):
         while self.clicker_running:
-            if not self.mouse_held[self.var_mouse_button.get()]:
+            if not self.mouse_held[self.var_mouse_button.get()] and not self.user_initiated_click:
                 self.mouse.click(button, 1)  # Click once
             time.sleep(interval)
+            self.user_initiated_click = False  # Reset the flag
 
+    def toggle_mouse_hold(self):
+        if self.in_hold_page:
+            button = Button.left if self.var_mouse_button.get() == "left" else Button.right
+            mouse_button = self.var_mouse_button.get()
+
+            if self.mouse_held[mouse_button]:
+                self.mouse.release(button)
+                self.mouse_held[mouse_button] = False
+                self.label_hold_status.configure(text=f"Mouse Hold Status: OFF", text_color='lightblue')
+            else:
+                self.mouse.press(button)
+                self.mouse_held[mouse_button] = True
+                self.label_hold_status.configure(text=f"Mouse Hold Status: ON", text_color='red')
+                self.user_initiated_click = True  # Set the flag when user initiates a click
 
     def start_keyboard_listener(self):
         with Listener(on_press=self.on_key_press) as listener:
@@ -162,10 +163,7 @@ class MouseApp:
 
     def on_key_press(self, key):
         try:
-            if key.char == '=':
-                if self.in_clicker_page:
-                    self.toggle_mouse_clicker()
-            elif key.char == '-':
+            if key.char == '-':
                 self.close_program()
         except AttributeError:
             pass  # Ignore non-char key events
