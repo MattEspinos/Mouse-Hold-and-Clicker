@@ -51,13 +51,13 @@ Mouse-Hold-and-Clicker is a Python GUI application built using Tkinter and custo
 
 3. **Hold Mouse:**
    - Select the mouse button to hold (left or right).
-   - Click the "Press '=' to toggle Mouse Hold" label to activate/deactivate the mouse hold.
+   - Press the '=' key to activate/deactivate the mouse hold.
    - Use the "Back" button to return to the welcome screen.
 
 4. **Mouse Clicker:**
    - Select the mouse button for clicking (left or right).
    - Choose the interval for mouse clicks using the dropdown menu.
-   - Click the "Press '=' to toggle Mouse Clicker" label to start/stop the mouse clicker.
+   - Press the '=' key to activate/deactivate the mouse hold.
    - Use the "Back" button to return to the welcome screen.
 
 ## Customization
